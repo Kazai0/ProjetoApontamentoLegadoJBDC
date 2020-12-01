@@ -1,0 +1,80 @@
+create database BDApontamento;
+
+
+drop database BDApontamento;
+
+use BDApontamento;
+
+-- alter table consulta add constraint consulta_paciente_fk
+-- foreign key (nr_seq_paciente)
+-- references paciente(nr_sequencia);
+-- 
+-- 
+-- create table ErrorType
+-- (
+-- ErrorTypeId tinyint primary key,
+-- ErrorTypeErro varchar(10)
+-- );
+-- 
+-- insert into ErrorType
+-- values(1, 'erroFaltando'), (2, 'erroDeslocado'),(3, 'erroPCI'),(4, 'erroFalhaEletrica');
+-- 
+-- delete from ErrorType where ErrorTypeId = 1000;
+-- 
+-- select * from ErrorType;
+
+-- create table selecaoErros
+-- (
+-- ErrotyId int(100) primary key,
+-- ErroTypeId tinyint references dbo.PartyType(PartyTypeId),
+-- unique (PartyId, PartyTypeId)
+-- )
+
+
+create table tb_usuario(
+id_usuario int(100) primary key,
+nome_usuario varchar(100) not null unique key,
+senha_usuario varchar(20) not null
+);
+
+insert into tb_usuario values(1, 'Tatiane','jesus');
+
+select *from tb_usuario; 
+
+SELECT * FROM tb_usuario where nome_usuario = 'tatiane' and senha = 'jesus';
+
+create table tb_produto(
+codigo_produto varchar (100)primary key,
+nome_produto varchar(100) not null
+);
+
+ insert into tb_produto values("800.3599.03",'Dm800');
+
+select * from tb_produto;
+
+-- drop table lancandoErro;-- 
+
+create table lancandoErro(
+id_lanca_erro tinyint(100) auto_increment  primary key,
+nome_erro varchar(30) not null,
+obs_erro varchar(100) not null,
+usuario_id_fk int(100) not null,
+codigo_produto_fk varchar(100) not null
+
+);
+
+describe lancandoErro;
+
+delete from lancandoErro where id_lanca_erro =1;
+
+insert into lancandoErro (nome_erro,obs_erro,usuario_id_fk,codigo_produto_fk) values ('teste', 'teste', 1, 800);
+
+select * from lancandoErro;
+
+
+alter table lancandoErro add constraint usuario_id_fk
+	foreign key (usuario_id_fk) references tb_usuario(id_usuario);
+
+alter table lancandoErro add constraint produtoFk
+	foreign key(codigo_produto_fk) references tb_produto(codigo_produto);
+
