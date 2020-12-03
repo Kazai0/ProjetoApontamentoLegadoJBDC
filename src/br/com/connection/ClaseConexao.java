@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
 
 public class ClaseConexao {
 	
@@ -58,13 +60,13 @@ public class ClaseConexao {
 		//method for closed connection references connection and PreraredStament 
 			
 			public static void closeConnection(Connection con,
-					java.sql.PreparedStatement stmt) {
+					Statement statament) {
 
 				fecharConexao(con);
 
 				try {
-					if (stmt != null) {
-						stmt.close();
+					if (statament != null) {
+						statament.close();
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -78,9 +80,9 @@ public class ClaseConexao {
 			//method for closed connection references connection, PreraredStament and ResultSet 
 			
 			public static void closeConnection(Connection con,
-					java.sql.PreparedStatement stmt, ResultSet rs) {
+					Statement statement, ResultSet rs) {
 
-				closeConnection(con, stmt);
+				closeConnection(con, statement);
 
 				try {
 
@@ -88,15 +90,26 @@ public class ClaseConexao {
 						rs.close();
 					}
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}
 		
-		
-			
-			
-		
-		
+				
+				public static void closeConnection(Connection con,
+						Statement statement, ResultSet rs, PreparedStatement stmt) {
+
+					closeConnection(con,statement, rs);
+
+					try {
+
+						if (stmt != null) {
+							stmt.close();
+						}
+					} catch (SQLException e) {
+						
+						e.printStackTrace();
+					}
+
 	
 			}
 	

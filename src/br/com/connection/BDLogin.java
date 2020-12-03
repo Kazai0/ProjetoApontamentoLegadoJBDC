@@ -25,40 +25,82 @@ public class BDLogin {
 		PreparedStatement stmt = null;
 		Statement statement = null;
 
+		
 		LoginModel lm = new LoginModel();
 
 		try {
 
-			String resultset = "select *from tb_usuario = '" + lm.getUsuario()
-					+ "'";
+			String resultset = "select *from tb_usuario where nome_usuario = '"
+					+ lm.getUsuario() + "'";
+
+			statement = (Statement) con
+					.prepareStatement("select *from tb_usuario");
+
+			rs = statement.executeQuery(resultset);
+
+			while (rs.next()) {
+				System.out.println("oi");
+
+				lm.setIdUsuarioL(rs.getLong("id_usuario"));
+
+				System.out.println(lm.getIdUsuarioL());
+
+			}
 
 		} catch (Exception e) {
 
-			// TODO: handle exception
+			System.out.println(e);
 		}
+
+		
+	finally {
+		ClaseConexao.closeConnection((com.mysql.jdbc.Connection) con, statement, rs, stmt);
+	}
 
 	}
 
 	public boolean metodoVerificarNome(String nome, String senha) {
 
 		// declare of the connection object and objects for commands of the BD
-		
+
 		ClaseConexao connectionClass = new ClaseConexao();
 		Connection con = connectionClass.getConnection();
 		ResultSet rs = null;
 		PreparedStatement stmt = null;
 		Statement statement = null;
-		
-		
+
+		LoginModel lgM = new LoginModel();
+
+		// Declare of the variable for check the attributes it's corrects for
+		// Data Center
+
+		boolean FazerCheck = false;
+
 		try {
-			
-			
-			
+
+			String forStmt = "SELECT * FROM tb_usuario where nome_usuario = ? and senha_usuario = ?";
+
+			stmt = (PreparedStatement) con.prepareStatement(forStmt);
+
+			stmt.setString(1, lgM.getUsuario());
+			stmt.setString(2, lgM.getSenha());
+
+			// method for execute the query
+
+			rs = stmt.executeQuery();
+
+			// this if will do while for searching the parameters of the
+			// getUsuario and GetSenha
+
+			if (rs.next()) {
+				FazerCheck = true;
+			}
+
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 
-		return true;
+		return FazerCheck;
 	}
 
 }
