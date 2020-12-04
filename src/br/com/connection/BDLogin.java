@@ -25,7 +25,6 @@ public class BDLogin {
 		PreparedStatement stmt = null;
 		Statement statement = null;
 
-		
 		LoginModel lm = new LoginModel();
 
 		try {
@@ -52,10 +51,10 @@ public class BDLogin {
 			System.out.println(e);
 		}
 
-		
-	finally {
-		ClaseConexao.closeConnection((com.mysql.jdbc.Connection) con, statement, rs, stmt);
-	}
+		finally {
+			ClaseConexao.closeConnection((com.mysql.jdbc.Connection) con,
+					statement, rs, stmt);
+		}
 
 	}
 
@@ -78,8 +77,10 @@ public class BDLogin {
 
 		try {
 
+			// String for execute command SQL
 			String forStmt = "SELECT * FROM tb_usuario where nome_usuario = ? and senha_usuario = ?";
 
+			// prepared command SQL for execute and until variable bellow
 			stmt = (PreparedStatement) con.prepareStatement(forStmt);
 
 			stmt.setString(1, lgM.getUsuario());
@@ -98,6 +99,12 @@ public class BDLogin {
 
 		} catch (Exception e) {
 
+		}
+		// closet the connections with data center
+
+		finally {
+			ClaseConexao.closeConnection((com.mysql.jdbc.Connection) con,
+					statement, rs, stmt);
 		}
 
 		return FazerCheck;

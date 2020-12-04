@@ -71,7 +71,7 @@ select * from tb_produto;
 
 
 
-						-- deletes
+						-- delets
 
 
 delete from lancandoErro where id_lanca_erro =1;
