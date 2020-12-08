@@ -1,7 +1,8 @@
 package br.com.main;
 
-import br.com.connection.BDLancarProduto;
+import br.com.connection.BDLancarErro;
 import br.com.connection.ClaseConexao;
+import br.com.view.TelaLogin;
 
 
 public class Principal {
@@ -14,6 +15,11 @@ public class Principal {
 		
 		if( cx.getConnection() != null){
 			System.out.println("thank you God");
+			
+			TelaLogin tL = new TelaLogin();
+			
+			tL.TelaLogin();
+			
 			
 
 			

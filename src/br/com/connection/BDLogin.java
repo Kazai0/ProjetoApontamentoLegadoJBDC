@@ -3,7 +3,7 @@ package br.com.connection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
-import br.com.domain.model.LancarProdutoModel;
+import br.com.domain.model.LancarErroModel;
 import br.com.domain.model.LoginModel;
 
 import com.mysql.jdbc.PreparedStatement;

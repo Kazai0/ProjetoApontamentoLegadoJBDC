@@ -1,6 +1,6 @@
 package br.com.domain.model;
 
-public class LancarProdutoModel {
+public class LancarErroModel {
 
 	static private String nameErro;
 	static private String obsErro;

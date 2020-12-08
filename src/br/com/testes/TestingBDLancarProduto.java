@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import br.com.connection.BDLancarProduto;
-import br.com.domain.model.LancarProdutoModel;
+import br.com.connection.BDLancarErro;
+import br.com.domain.model.LancarErroModel;
 
 public class TestingBDLancarProduto {
 
@@ -14,13 +14,13 @@ public class TestingBDLancarProduto {
 	
 	@Test
 	public void testingLPMLPBD() {
-		LancarProdutoModel lPM = new LancarProdutoModel();
+		LancarErroModel lPM = new LancarErroModel();
 		
 		lPM.setCodigoProduto("800.3599.03");
 		lPM.setNameErro("Faltando");
 		lPM.setObsErro("faltando Parafuso");
 		
-		BDLancarProduto bdLP = new BDLancarProduto();
+		BDLancarErro bdLP = new BDLancarErro();
 		
 		bdLP.inserindoDados();
 	

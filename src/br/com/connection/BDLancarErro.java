@@ -2,7 +2,10 @@ package br.com.connection;
 
 import java.sql.ResultSet;
 
-import br.com.domain.model.LancarProdutoModel;
+import javax.swing.JOptionPane;
+
+import br.com.domain.model.LancarErroModel;
+import br.com.domain.model.LoginModel;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -10,7 +13,7 @@ import com.mysql.jdbc.Statement;
 
 //This class is response for management data 
 
-public class BDLancarProduto {
+public class BDLancarErro {
 
 	// method for put the data in BD
 
@@ -25,8 +28,14 @@ public class BDLancarProduto {
 		Statement statement = null;
 
 		// object Model for get attributes
-		LancarProdutoModel lPM = new LancarProdutoModel();
+		LancarErroModel lPM = new LancarErroModel();
+		LoginModel lM = new LoginModel();
 
+		
+		//box of verification SQL 
+		JOptionPane Mensagem = new JOptionPane();
+		
+		
 		// Exception for insert the dates in the Data center
 
 		try {
@@ -38,15 +47,19 @@ public class BDLancarProduto {
 
 			stmt.setString(1, lPM.getNameErro());
 			stmt.setString(2, lPM.getObsErro());
-			stmt.setInt(3, 1);
+			stmt.setLong(3,lM.getIdUsuarioL());
 			stmt.setString(4, lPM.getCodigoProduto());
 
 			// execute the SQL command
 
 			stmt.executeUpdate();
+			
+			//message for show if SQL it's OK
 
+			Mensagem.showMessageDialog(null, "Erro foi apontado com sucesso");
+			
 		} catch (Exception e) {
-			System.out.println(e);
+			Mensagem.showMessageDialog(null, e);
 
 		}
 

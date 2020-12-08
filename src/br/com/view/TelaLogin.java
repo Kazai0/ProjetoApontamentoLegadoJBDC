@@ -38,6 +38,8 @@ public class TelaLogin extends JFrame implements ActionListener {
 	static JLabel lblSenha = new JLabel();
 	static JLabel lblPegandoImage = new JLabel();
 	
+	//box for text
+	
 	static JOptionPane caixaTexto = new JOptionPane();
 
 	// this method is response of the calls for open the Frame
@@ -140,6 +142,19 @@ public class TelaLogin extends JFrame implements ActionListener {
 
 						bDl.VerificandoDados();
 
+						// Create the object of the TelaCadastro 
+						
+						TelaCadastroErros tE = new  TelaCadastroErros();
+						
+						//Call method for Frame
+						
+						tE.TelaCadastro();
+						
+						//method for closet  this frame
+						
+						dispose();
+					
+						
 						
 					}
 
