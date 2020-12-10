@@ -169,8 +169,31 @@ public class TelaCadastroErros extends JFrame implements ActionListener {
 				
 				switch (acation){
 				case "Voltar":
-					System.out.println("voltar");
-				}
+					
+					
+					//Create the menu object 
+					
+					TelaMenu tCE = new TelaMenu();
+
+					//this condition will verification if that frame it is open
+					
+					if (TelaMenu.instance != null) {
+
+						TelaMenu.instance.setVisible(true);
+						
+
+					}
+
+					else {
+						System.out.println("else?");
+
+						TelaMenu tM = new TelaMenu();
+						tM.metodoTelaMenu();
+					}
+					
+					dispose();
+					
+					}
 
 			}
 		});

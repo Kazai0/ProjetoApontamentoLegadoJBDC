@@ -5,6 +5,8 @@ import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -41,7 +43,9 @@ public class TelaLogin extends JFrame implements ActionListener {
 	//box for text
 	
 	static JOptionPane caixaTexto = new JOptionPane();
+	
 
+	
 	// this method is response of the calls for open the Frame
 	public void TelaLogin() {
 
@@ -56,6 +60,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 	// this method is response of the setters of the components
 	private void configuracaoComponentes() {
 
+		
 		// setter parameter of the layout
 
 		painelLogin.setLayout(null);
@@ -91,13 +96,26 @@ public class TelaLogin extends JFrame implements ActionListener {
 
 		// Add components in the panel
 
+
 		painelLogin.add(btnEntrar);
 		painelLogin.add(btnCadastrar);
 		painelLogin.add(lblUsuario);
 		painelLogin.add(lblSenha);
 		painelLogin.add(txtUsuario);
 		painelLogin.add(txtSenha);
-
+		
+		
+		
+// Image studies 
+//		// icon for put the image in frame
+//		
+//		Icon icon1 = new ImageIcon("/root/workspace/WorkspacePrincipal/ApontamentoQualidade/src/br/com/imagens/bytes.jpeg");
+//		
+//		JLabel labelForImage = new JLabel(icon1);
+//		
+////		getContentPane().add(labelForImage, BorderLayout.CENTER);
+		
+		
 	}
 
 	// This method is response for configuration of the Frame
@@ -144,11 +162,11 @@ public class TelaLogin extends JFrame implements ActionListener {
 
 						// Create the object of the TelaCadastro 
 						
-						TelaCadastroErros tE = new  TelaCadastroErros();
+						TelaMenu tM = new TelaMenu();
 						
 						//Call method for Frame
 						
-						tE.TelaCadastro();
+						tM.metodoTelaMenu();
 						
 						//method for closet  this frame
 						
